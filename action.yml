@@ -1,0 +1,22 @@
+name: "Check if base image has been updated"
+description: "GitHub Action to check if the base Docker image has been updated"
+author: Mike Jones
+
+inputs:
+  base-image:
+    description: "Docker base image"
+    required: true
+  image:
+    description: "Docker image"
+    required: true
+outputs:
+  needs-updating:
+    description: "True or false"
+    value: ${{ steps.run-script.outputs.result }}
+runs:
+  using: "composite"
+  steps:
+    - id: run-script
+      run: |
+        $(base=${{ inputs.base-image }} image=${{ inputs.image }} ${{ github.action_path }}/docker.sh)
+      shell: bash
