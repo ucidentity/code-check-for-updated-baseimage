@@ -9,6 +9,9 @@ inputs:
   image:
     description: "Docker image"
     required: true
+  ACCESS_TOKEN:
+    description: GITHUB TOKEN
+    required: true
 outputs:
   needs-updating:
     description: "True or false"
@@ -18,5 +21,5 @@ runs:
   steps:
     - id: run-script
       run: |
-        base=${{ inputs.base-image }} image=${{ inputs.image }} ${{ github.action_path }}/check.sh
+        base=${{ inputs.base-image }} image=${{ inputs.image }} ACCESS_TOKEN=${{ inputs.ACCESS_TOKEN }} ${{ github.action_path }}/check.sh
       shell: bash
