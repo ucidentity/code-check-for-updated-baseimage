@@ -9,9 +9,6 @@ inputs:
   image:
     description: "Docker image"
     required: true
-  ACCESS_TOKEN:
-    description: GITHUB TOKEN
-    required: true
 outputs:
   needs-updating:
     description: "True or false"

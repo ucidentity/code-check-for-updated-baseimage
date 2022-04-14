@@ -19,7 +19,7 @@ base_layers=$(jq -r '[.layers[].digest]' <<<"$docker_manifest")
 
 
 # echo "getting ghcr.io layers"
-ghcr_manifest=$(curl -H "Authorization: Bearer $(echo $ACCESS_TOKEN | base64)" -H "Accept: application/vnd.docker.distribution.manifest.list.v2+json" https://ghcr.io/v2/${image_i}/manifests/${image_t} 2>/dev/null)
+ghcr_manifest=$(curl -H "Authorization: Bearer $(echo $INPUT_GITHUB_TOKEN | base64)" -H "Accept: application/vnd.docker.distribution.manifest.list.v2+json" https://ghcr.io/v2/${image_i}/manifests/${image_t} 2>/dev/null)
 #echo "ghcr manifest:"
 #echo $ghcr_manifest
 images_layers=$(jq -r '[.layers[].digest]' <<<"$ghcr_manifest")
