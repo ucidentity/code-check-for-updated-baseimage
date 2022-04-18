@@ -4,7 +4,8 @@
 IFS=: read base_i base_t <<<$base
 IFS=: read image_i image_t <<<$image
 
-echo "image: ${image}"
+echo "::debug:: base_i: ${base_i} base_t: ${base_t}"
+echo "::debug:: image_i: ${image_i} image_t: ${image_t}"
 
 token=$(curl 'https://auth.docker.io/token?service=registry.docker.io&scope=repository:'${base_i}':pull' 2>/dev/null | jq -r '.token')
 
