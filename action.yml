@@ -18,5 +18,5 @@ runs:
   steps:
     - id: run-script
       run: |
-        base=${{ inputs.base-image }} image=${{ inputs.image }} ${{ github.action_path }}/check.sh
+        base=${{ inputs.base-image }} image=${{ inputs.image }} gh_token=${{ secrets.GITHUB_TOKEN }} ${{ github.action_path }}/check.sh
       shell: bash
