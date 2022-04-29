@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# if base isn't set, try and extract from the Dockerfile
+if [ -z $base ]; then
+base=$(grep FROM Dockerfile | cut -d' ' -f 2)
+fi
+
+# if the image is just a name, prepend library/
+grep -q "/" <<<$base || base=$(printf "library/%s" $base)
+
 
 IFS=: read base_i base_t <<<$base
 IFS=: read image_i image_t <<<$image
