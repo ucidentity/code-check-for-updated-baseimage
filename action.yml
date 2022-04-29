@@ -4,8 +4,8 @@ author: Mike Jones
 
 inputs:
   base-image:
-    description: "Docker base image"
-    required: true
+    description: "Docker base image, if not specified, action will try and extract it from the Dockerfile.  This will currently fail if there are multiple FROM statements"
+    required: false
   image:
     description: "Docker image"
     required: true
