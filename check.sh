@@ -24,6 +24,7 @@ echo "::debug::docker base layers: ${base_layers}"
 
 
 ghcr_manifest=$(curl -H "Authorization: Bearer $(echo $gh_token | base64)" -H "Accept: application/vnd.docker.distribution.manifest.list.v2+json" https://ghcr.io/v2/${image_i}/manifests/${image_t} 2>/dev/null)
+echo "::debug::ghcr manifest: ${ghcr_manifest}"
 images_layers=$(jq -r '[.layers[].digest]' <<<"$ghcr_manifest")
 echo "::debug::ghcr layers: ${images_layers}"
 
